@@ -1,4 +1,5 @@
 let timeLeft = 25 * 60; // 25 minutes in seconds
+let isWorkPeriod = true; // Track if we're in work or rest period
 let timerId = null;
 let isRunning = false;
 
@@ -23,10 +24,11 @@ function startTimer() {
             
             if (timeLeft === 0) {
                 clearInterval(timerId);
-                isRunning = false;
-                alert('Time is up!');
-                timeLeft = 25 * 60;
+                isWorkPeriod = !isWorkPeriod; // Toggle between work and rest
+                timeLeft = isWorkPeriod ? 25 * 60 : 5 * 60; // Set appropriate time
+                alert(isWorkPeriod ? 'Rest time is over! Time to work!' : 'Work time is over! Take a break!');
                 updateDisplay();
+                startTimer(); // Automatically start the next period
             }
         }, 1000);
     }
@@ -35,6 +37,7 @@ function startTimer() {
 function stopTimer() {
     clearInterval(timerId);
     isRunning = false;
+    isWorkPeriod = true; // Reset to work period
     timeLeft = 25 * 60;
     updateDisplay();
 }
