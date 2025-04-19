@@ -27,7 +27,7 @@ h1 {
 }
 
 .timer {
-    font-size: 4rem;
+    font-size: 12rem;
     font-weight: bold;
     color: #2c3e50;
     margin-bottom: 2rem;
@@ -49,16 +49,16 @@ button {
 }
 
 #start {
-    background-color: #cc2e82;
+    background-color: #2ecc71;
     color: white;
 }
 
 #start:hover {
-    background-color: #8327ae;
+    background-color: #27ae60;
 }
 
 #stop {
-    background-color: #3caee7;
+    background-color: #e74c3c;
     color: white;
 }
 
