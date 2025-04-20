@@ -8,6 +8,8 @@ const secondsDisplay = document.getElementById('seconds');
 const startButton = document.getElementById('start');
 const stopButton = document.getElementById('stop');
 
+const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+
 function updateDisplay() {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
@@ -24,11 +26,12 @@ function startTimer() {
             
             if (timeLeft === 0) {
                 clearInterval(timerId);
-                isWorkPeriod = !isWorkPeriod; // Toggle between work and rest
-                timeLeft = isWorkPeriod ? 25 * 60 : 5 * 60; // Set appropriate time
+                audio.play();
+                isWorkPeriod = !isWorkPeriod;
+                timeLeft = isWorkPeriod ? 25 * 60 : 5 * 60;
                 alert(isWorkPeriod ? 'Rest time is over! Time to work!' : 'Work time is over! Take a break!');
                 updateDisplay();
-                startTimer(); // Automatically start the next period
+                startTimer();
             }
         }, 1000);
     }
